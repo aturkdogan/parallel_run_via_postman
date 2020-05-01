@@ -15,5 +15,8 @@ node run.js
 sh mybashNew.sh
 ```
 
-## Note:
-Windows Users should run the commands in PowerShell.
+## NOTE:
+Windows Users should run the commands in **PowerShell**.
+
+## DEMO VIDEO
+[Parallel vs Sequential Run in Postman](https://www.youtube.com/watch?v=omqEodlRhn0)
