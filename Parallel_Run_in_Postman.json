@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "036f1a85-5ec0-4676-b22f-def08f9de08f",
+		"name": "Parallel_Run_in_Postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "request",
+			"item": [
+				{
+					"name": "echo-postman-request-header",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "56d13e48-9954-486b-9c6b-5a1c0f32adae",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"//console.log(\"resp:\"+jsonData.headers.host);",
+									"tests[\"Tests of echo-Request Header\"] = jsonData.headers.host == \"postman-echo.com\";"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://postman-echo.com/headers",
+							"protocol": "https",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"headers"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5e4aa121-9ecd-4b03-a52f-d60c37fd82fd",
+						"type": "text/javascript",
+						"exec": [
+							"//FOLDER LEVEL PREREQUISITE OPERATIONS",
+							"const fldr = \"REQUEST\";",
+							"pm.environment.set(\"folder\",fldr);",
+							"const helper = eval(pm.globals.get(\"helper\"));",
+							"helper.logTime2(\"START\",fldr);",
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "75cf098f-65fc-404f-b012-800a3d7b7f93",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "response",
+			"item": [
+				{
+					"name": "echo-postman-response-header",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "56d13e48-9954-486b-9c6b-5a1c0f32adae",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"//console.log(\"resp:\"+jsonData.headers.host);",
+									"tests[\"Tests of echo-Response Header\"] = jsonData.test == \"response_headers\";"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "777c4760-e3d6-42d1-9405-1168cd8b58d4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://postman-echo.com/response-headers?Content-Type=text/html&test=response_headers",
+							"protocol": "https",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"response-headers"
+							],
+							"query": [
+								{
+									"key": "Content-Type",
+									"value": "text/html"
+								},
+								{
+									"key": "test",
+									"value": "response_headers"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9cbe3a51-1117-4568-9f66-d28918eeed54",
+						"type": "text/javascript",
+						"exec": [
+							"//FOLDER LEVEL PREREQUISITE OPERATIONS",
+							"const fldr = \"RESPONSE\";",
+							"pm.environment.set(\"folder\",fldr);",
+							"const helper = eval(pm.globals.get(\"helper\"));",
+							"helper.logTime2(\"START\",fldr);"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "3c88ea80-772d-4e8e-b559-bde88deb5d08",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "time",
+			"item": [
+				{
+					"name": "time",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2ddabace-43cf-44fb-afbb-73f72121e576",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"//console.log(\"resp:\"+jsonData.headers.host);",
+									"tests[\"Tests of Time request\"] = jsonData.years == 2020 && jsonData.date == 23;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://postman-echo.com/time/object?timestamp=2020-04-23",
+							"protocol": "https",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"time",
+								"object"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "2020-04-23"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "13ca7750-0feb-4fa9-9aec-ce28746258fb",
+						"type": "text/javascript",
+						"exec": [
+							"//FOLDER LEVEL PREREQUISITE OPERATIONS",
+							"const fldr = \"TIME\";",
+							"pm.environment.set(\"folder\",fldr);",
+							"const helper = eval(pm.globals.get(\"helper\"));",
+							"helper.logTime2(\"START\",fldr);"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a97bb07b-2325-4bb6-b863-fb00256927b7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "51fb2013-b9c3-4308-a22a-40c2d7c7d5f8",
+				"type": "text/javascript",
+				"exec": [
+					"//REUSABLE FUCTION: loadhelper()",
+					"pm.globals.set(\"helper\", function loadhelper() {",
+					"  let helper = {};",
+					"",
+					"  helper.log = (string) => {",
+					"    console.log(string);",
+					"  }",
+					"",
+					"",
+					"    //LOG Start time of request",
+					"    const moment = require('moment');",
+					"    const today = moment().format('DD.MM.YYYY hh:mm:ss:SSS');",
+					"    ",
+					"    //let folder = pm.environment.get(\"folder\");",
+					"    ",
+					"    helper.logTime = (string) => {",
+					"        console.log('START-> '+string+' folder:'+today);",
+					"    }",
+					"    ",
+					"    helper.logTime2 = (key, str ) => {",
+					"        console.log(key+'-> '+str+' folder:'+today);",
+					"    }",
+					"",
+					"  return helper;",
+					"  ",
+					"} + '; loadhelper();');",
+					"",
+					"",
+					"",
+					"",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "81a5200d-4919-4018-b681-8053623a7773",
+				"type": "text/javascript",
+				"exec": [
+					"//COLLECTION LEVEL TESTS",
+					"tests[\"Status code is 200\"] = responseCode.code === 200 ;",
+					"//const moment = require('moment')",
+					"//const today = moment().format('DD.MM.YYYY hh:mm:ss:SSS');",
+					"",
+					"// specific request Pre-request Script or Tests tab",
+					"//const helper = eval(pm.globals.get(\"helper\"));",
+					"",
+					"//let folder = pm.environment.get(\"folder\");",
+					"//helper.log('END-> '+folder+' folder:'+today);",
+					"",
+					"const helper = eval(pm.globals.get(\"helper\"));",
+					"let folder = pm.environment.get(\"folder\");",
+					"helper.logTime2(\"END\",folder);"
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
